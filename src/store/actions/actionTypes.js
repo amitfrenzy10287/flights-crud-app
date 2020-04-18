@@ -1,0 +1,9 @@
+export const INIT_WATCH_MOVIE = 'INIT_WATCH_MOVIE';
+export const ADD_MOVIES = 'ADD_MOVIES';
+export const ADD_SEATS = 'ADD_SEATS';
+export const REMOVE_SEATS = 'REMOVE_SEATS';
+export const REMOVE_MOVIES = 'REMOVE_MOVIES';
+export const SET_MOVIES = 'SET_MOVIES';
+export const SET_SEATS = 'SET_SEATS';
+export const INIT_MOVIES = 'INIT_MOVIES';
+export const FETCH_MOVIES_FAILED = 'FETCH_MOVIES_FAILED';
