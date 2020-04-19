@@ -2,34 +2,24 @@ import { put } from "redux-saga/effects";
 import axios from "../../axios-flights";
 import * as actions from "../actions";
 
-export function* initMoviesAvailableSaga(action) {
+export function* initCheapAndBusinessFlights() {
     try {
-        const responseMovies = yield axios.get( 'api/flights/cheap');
+        const respCheapFlights= yield axios.get( 'api/flights/cheap');
         const respBusinessFlights = yield axios.get( 'api/flights/business');
-        const fetchedMovie = [];
-        for (let key in responseMovies.data) {
-            fetchedMovie.push({
-                ...responseMovies.data[key]
+        const sortedFlights = [];
+        respCheapFlights.data.data.map((arr)=>{
+            let route = arr.route.split("-");
+            sortedFlights.push({
+                "departure": route[0],
+                "arrival": route[1],
+                "departureTime": arr.departure,
+                "arrivalTime": arr.arrival,
+                "type": "cheap"
             });
-        }
-        //yield put(actions.setMovies(fetchedMovie));
+        });
+        const fetchedFlights = sortedFlights.concat(respBusinessFlights.data.data);
+        yield put(actions.setFlights(fetchedFlights));
     } catch (error) {
-        //yield put(actions.fetchMoviesFailed());
+        yield put(actions.fetchFlightsFailed());
     }
-}
-export function* initSeatsAvailableSaga(action) {
-    try {
-        const responseSeats = yield axios.get(
-            "https://bookmymovies-db.firebaseio.com/seat_details.json"
-        );
-        const fetchedMovieSeats = [];
-        for (let key in responseSeats.data) {
-            fetchedMovieSeats.push({
-                ...responseSeats.data[key]
-            });
-        }
-        //yield put(actions.setSeats(fetchedMovieSeats));
-    } catch (error) {
-        //yield put(actions.fetchMoviesFailed());
-    }
-}
+};

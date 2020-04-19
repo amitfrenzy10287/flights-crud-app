@@ -1,15 +1,19 @@
 import * as actionTypes from './actionTypes';
 
-export const initWatchMovie = ( watchmovie ) => {
+export const getAllFlights = () => {
     return {
-        type: actionTypes.INIT_WATCH_MOVIE,
-        watchmovie: watchmovie
+        type: actionTypes.GET_ALL_FLIGHTS,
+    };
+};
+export const setFlights = (flights) => {
+    return {
+        type: actionTypes.SET_ALL_FLIGHTS,
+        allFlights:flights
     };
 };
 
-export const addSeats = ( seats ) => {
+export const fetchFlightsFailed = () => {
     return {
-        type: actionTypes.ADD_SEATS,
-        seats: seats
+        type: actionTypes.FETCH_FLIGHTS_FAILED,
     };
 };

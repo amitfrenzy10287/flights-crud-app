@@ -16,7 +16,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
 const drawerWidth = 240;
@@ -27,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     },
     mainContainer: {
         backgroundColor: '#cfe8fc',
-        height: 'calc(100vh - 64px)',
+        height: 'auto',
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
@@ -148,21 +147,14 @@ export const Layout =(props)=>{
                 </div>
                 <Divider />
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
-                <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
+                    <ListItem button>
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary={'Home'} />
+                    </ListItem>
+                    <ListItem button>
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText primary={'Add Flights'} />
+                    </ListItem>
                 </List>
             </Drawer>
             <main className={classes.content}>
@@ -171,4 +163,4 @@ export const Layout =(props)=>{
             </main>
         </Grid>
     );
-}
+};
