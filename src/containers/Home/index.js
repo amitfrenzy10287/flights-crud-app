@@ -19,6 +19,7 @@ import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import AddIcon from '@material-ui/icons/Add';
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -188,6 +189,7 @@ const Home=(props)=>{
 
     const reformatDateTime = React.useCallback(((flightDate)=>{
         if(!flightDate) return false;
+        if((typeof flightDate)==="string") return flightDate;
         let unix_timestamp = flightDate;
         let date = new Date(unix_timestamp * 1000);
         let hours = date.getHours();
@@ -212,7 +214,7 @@ const Home=(props)=>{
                 let arrTime =reformatDateTime(s.departureTime);
                 let depTime = reformatDateTime(s.arrivalTime);
                 let val = e.target.value.toLowerCase();
-                return arrival.includes(val) || departure.includes(val) || arrTime.includes(val) || depTime.includes(val);
+                return arrival.includes(val) || departure.includes(val);
             });
         setResult(prevState=>({
             ...prevState,
@@ -220,7 +222,6 @@ const Home=(props)=>{
         }));
     },[finalTableData]);
     const tableData = Object.keys(result).length > 0 ? Object.keys(result).map((k) => result[k]) : finalTableData;
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, tableData.length - page * rowsPerPage);
     const addFlight=React.useCallback(()=>{
         props.history.push('/addflight');
     },[]);
@@ -243,7 +244,7 @@ const Home=(props)=>{
                     </IconButton>
                 </Paper>
                 <Button variant="contained" onClick={addFlight} color="primary">
-                    Add Flight
+                    <AddIcon /> Add Flight
                 </Button>
                 </Grid>
                 <TableContainer>
@@ -279,7 +280,7 @@ const Home=(props)=>{
                                         </TableRow>
                                     );
                                 }):(loading===true ?
-                                    <TableCell rowSpan={5} colSpan={4}>
+                                    <TableCell colSpan={5}>
                                         <Skeleton className={classes.loader} animation="wave" />
                                         <Skeleton className={classes.loader} animation="wave" />
                                         <Skeleton className={classes.loader} animation="wave" />
@@ -290,11 +291,6 @@ const Home=(props)=>{
                                   No Records found!
                                 </TableCell>)
                             }
-                            {emptyRows > 0 && (
-                                <TableRow style={{ height: 53 * emptyRows }}>
-                                    <TableCell colSpan={6} />
-                                </TableRow>
-                            )}
                         </TableBody>
                     </Table>
                 </TableContainer>
@@ -311,7 +307,6 @@ const Home=(props)=>{
         </div>
     );
 };
-
 
 const mapStateToProps = state => {
     return {

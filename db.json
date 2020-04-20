@@ -1,5 +1,44 @@
 {
-  "common_data":{
-
-  }
+  "common_data": [
+    {
+      "arrival": "Mumbai",
+      "departure": "Singapore",
+      "arrivalTime": "07:30",
+      "departureTime": "15:30",
+      "class": "business",
+      "id": 1
+    },
+    {
+      "arrival": "Germany",
+      "departure": "United states",
+      "arrivalTime": "07:30",
+      "departureTime": "15:30",
+      "class": "business",
+      "id": 2
+    },
+    {
+      "arrival": "Thailand",
+      "departure": "Singapore",
+      "arrivalTime": "03:49",
+      "departureTime": "17:50",
+      "class": "cheap",
+      "id": 3
+    },
+    {
+      "arrival": "Phuket",
+      "departure": "Krabi",
+      "arrivalTime": "07:30",
+      "departureTime": "15:30",
+      "class": "cheap",
+      "id": 4
+    },
+    {
+      "arrival": "Bangkok",
+      "departure": "Shanghai",
+      "arrivalTime": "03:56",
+      "departureTime": "16:06",
+      "class": "business",
+      "id": 5
+    }
+  ]
 }

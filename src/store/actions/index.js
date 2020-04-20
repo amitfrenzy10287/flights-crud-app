@@ -1,5 +1,8 @@
 export {
     getAllFlights,
     setFlights,
-    fetchFlightsFailed
+    fetchFlightsFailed,
+    addFlights,
+    addFlightsSuccess,
+    addFlightsFailed
 } from './flightBooking';

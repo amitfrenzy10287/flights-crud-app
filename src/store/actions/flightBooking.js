@@ -5,6 +5,23 @@ export const getAllFlights = () => {
         type: actionTypes.GET_ALL_FLIGHTS,
     };
 };
+export const addFlightsSuccess = (resp) => {
+    return {
+        type: actionTypes.ADD_FLIGHTS_SUCCESS,
+        addFlight:resp
+    };
+};
+export const addFlightsFailed = () => {
+    return {
+        type: actionTypes.ADD_FLIGHTS_FAILED,
+    };
+};
+export const addFlights = (data) => {
+    return {
+        type: actionTypes.ADD_FLIGHTS,
+        data
+    };
+};
 export const setFlights = (flights) => {
     return {
         type: actionTypes.SET_ALL_FLIGHTS,
