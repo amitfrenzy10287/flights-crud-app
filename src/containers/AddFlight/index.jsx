@@ -184,7 +184,7 @@ const AddFlight=(props)=> {
 };
 const mapStateToProps = state => {
     return {
-        flightsRes: state.flights.addFlight
+        flightsRes: state.flights && state.flights.addFlight ? state.flights.addFlight : ''
     }
 };
 

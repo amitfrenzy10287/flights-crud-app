@@ -199,6 +199,7 @@ const Home=(props)=>{
     }),[]);
 
     const finalTableData = React.useMemo(()=>{
+        if(!flights) return false;
         const count = Object.keys(flights).length;
         if(count===0 || error ===true) return [];
         return flights;
@@ -310,9 +311,9 @@ const Home=(props)=>{
 
 const mapStateToProps = state => {
     return {
-        flights: state.flights.allFlights,
-        error: state.flights.error,
-        loading: state.flights.loading
+        flights: state.flights && state.flights.allFlights,
+        error: state.flights && state.flights.error,
+        loading: state.flights && state.flights.loading
     }
 };
 
